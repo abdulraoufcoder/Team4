@@ -1,2 +1,2 @@
 # Team4
-This is the team of Girls
+This is the team of Girls.

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 100%;
+        background-color: #707DFA40;
+        height: 340px;
+        text-align: center;
+    }
+
+    img {
+       
+        width: 70%;
+        height: 340px;
+        position: relative;
+        color: #b1b6e7;
+        mix-blend-mode: lighten;
+
+    }
+
+    form {
+        margin-top: 40px;
+        font-family: sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .d1 {
+  
+        display: flex;
+        flex-direction: column;
+        margin-left: 190px;
+        gap: 10px;
+        margin-bottom: 20px;
+
+    }
+
+    input {
+        width: 884px;
+        height: 38px;
+        padding-left: 17px;
+        border: 1px solid blue;
+        border-radius: 4px;
+    }
+
+    .d2 {
+        text-align: center;
+        margin-bottom: 130px;
+        margin-top: 30px;
+     
+    }
+    button{
+        width: 886px;
+        height: 38px;
+        background-color: #6776fe;
+        border-radius: 4px;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <img src="3c16400f-6e18-40f1-abc7-09ea7f079899_XC40_C40_Recharge 1 (2).png" alt="">
+    </div>
+    <form action="" class="form">
+        <h1>Add Car</h1>
+        <div class="d1">
+            <label for="">Car Name</label>
+            <input type="text" placeholder="Card Name" name="name">
+        </div>
+        <div class="d1">
+            <label for="">Fuel</label>
+            <input type="text" placeholder="Fuel" name="fuel">
+        </div>
+        </div>
+        <div class="d1">
+            <label for="">Speed</label>
+            <input type="text" placeholder="Speed" name="speed">
+        </div>
+        </div>
+        <div class="d1">
+            <label for="">Price</label>
+            <input type="text" placeholder="Price" name="price">
+        </div>
+        </div>
+        <div class="d1">
+            <label for="">Image Url</label>
+            <input type="text" placeholder="Image url" name="img">
+        </div>
+        <div class="d2">
+            <button type="submit" >Submit</button>
+        </div>
+
+
+    </form>
+
+</body>
+<script>
+   const url = "http://localhost:3000/cars1"
+
+function gettingData() {
+    fetch(url).then(data => {
+        return data.json()
+    }).then(users => {
+        console.log(users);
+    })
+}
+const form = document.querySelector(".form");
+form.addEventListener("submit", function (event) {
+
+
+  
+    console.log(event);
+    event.preventDefault();
+
+    console.log(this.name.value, this.fuel.value, this.speed.value, this.price.value, this.img.value);
+
+
+    const userObj = {
+        name: this.name.value,
+        fuel: this.fuel.value,
+        speed: this.speed.value,
+        price: this.price.value,
+        img: this.img.value
+    }
+
+    console.log(userObj);
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userObj)
+    })
+
+    gettingData()
+})
+
+</script>
+
+
+</html>

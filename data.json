@@ -1,0 +1,53 @@
+{
+   
+    "cars" : [
+        {
+            "id" : 1,
+            "imgUrl" : "https://www.shutterstock.com/image-vector/white-realistic-vector-3d-vehicle-600nw-2167930517.jpg",
+            "h1" : "Car 1-Toyota",
+        "Fuel": "70ltr",
+        "Speed": "120km/hr",
+        "Price": 125000
+        },
+        {
+            "id" : 2,
+            "imgUrl" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtMCJE-h9iaJHsE1JuRbOjWWmPn06Ohh_Q4JJpqOLMILx7gymOaV5Yg2cmOBn1wdZ5qyk&usqp=CAU",
+            "h1" : "Car 2-Toyota",
+        "Fuel": "70ltr",
+        "Speed": "120km/hr",
+        "Price": 125000
+        },
+        {
+            "id" : 3,
+            "imgUrl" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3FbIzFb_6havK-Acdms1FWfN0M5qdOTjI5Q&usqp=CAU",
+            "h1" : "Car 3-Toyota",
+        "Fuel": "70ltr",
+        "Speed": "120km/hr",
+        "Price": 125000
+        },
+        {
+            "id" : 4,
+            "imgUrl" : "https://img.freepik.com/premium-photo/red-ferrari-gt488-white-background-3d-rendering-car-generated-with-ai_827055-199.jpg",
+            "h1" : "Car 4-Toyota",
+        "Fuel": "70ltr",
+        "Speed": "120km/hr",
+        "Price": 125000
+        },
+        {
+            "id" : 5,
+            "imgUrl" : "https://img.freepik.com/premium-photo/pink-car-is-shown-this-drawing-style-white-background-with-shadow-black-outline-ai_101266-27253.jpg?size=626&ext=jpg",
+            "h1" : "Car 5-Toyota",
+        "Fuel": "70ltr",
+        "Speed": "120km/hr",
+        "Price": 125000
+        },
+        {
+            "id" : 6,
+            "imgUrl" : "https://img.freepik.com/premium-photo/blue-sports-car-white-background-with-shadow-ai_101266-27285.jpg?w=2000",
+            "h1" : "Car 6-Toyota",
+        "Fuel": "70ltr",
+        "Speed": "120km/hr",
+        "Price": 125000
+        }
+]
+}

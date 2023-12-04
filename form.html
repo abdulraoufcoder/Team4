@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 100%;
+        background-color: #707DFA40;
+        height: 340px;
+        text-align: center;
+    }
+
+    img {
+
+        width: 70%;
+        height: 340px;
+        position: relative;
+        color: #b1b6e7;
+        mix-blend-mode: soft-light;
+
+    }
+
+    form {
+        margin-top: 40px;
+        font-family: sans-serif;
+        width: 70%;
+        margin: auto;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 28px;
+        padding-top: 40px;
+    }
+
+    .d1 {
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+    }
+
+    input {
+        width: 100%;
+        height: 38px;
+        padding-left: 17px;
+        border: 1px solid rgb(26, 26, 36);
+        border-radius: 4px;
+    }
+
+    label {
+        margin-top: 15px;
+    }
+
+    .d2 {
+        text-align: center;
+
+
+    }
+
+    button {
+
+        width: 100%;
+        height: 38px;
+        background-color: #6776fe;
+        border-radius: 4px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 30px;
+        margin-bottom: 100px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <img src="3c16400f-6e18-40f1-abc7-09ea7f079899_XC40_C40_Recharge 1 (2).png" alt="">
+    </div>
+    <form action="" class="form">
+        <h1>Add Car</h1>
+        <div class="d1">
+            <label for="">Car Name</label>
+            <input type="text" placeholder="Card Name" name="name" id="Name">
+        </div>
+        <div class="d1">
+            <label for="">Fuel</label>
+            <input type="text" placeholder="Fuel" name="fuel" id="Fuel">
+        </div>
+        </div>
+        <div class="d1">
+            <label for="">Speed</label>
+            <input type="text" placeholder="Speed" name="speed" id="Speed">
+        </div>
+        </div>
+        <div class="d1">
+            <label for="">Price</label>
+            <input type="text" placeholder="Price" name="price" id="Price">
+        </div>
+        </div>
+        <div class="d1">
+            <label for="">Image Url</label>
+            <input type="text" placeholder="Image url" name="img" id="Img">
+        </div>
+        <div class="d2">
+            <button type="submit">Submit</button>
+        </div>
+
+
+    </form>
+
+</body>
+<script>
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    let url = "http://localhost:3000/Inputs"
+
+    function print() {
+        window.location.href = "index.html"
+    }
+
+    const form = document.querySelector('.form')
+    form.addEventListener('submit', function (event) {
+
+        console.log(event);
+        event.preventDefault();
+
+        console.log(this.name.value, this.fuel.value, this.speed.value, this.price.value, this.img.value);
+
+
+        const userObj = {
+            name: this.name.value,
+            fuel: this.fuel.value,
+            speed: this.speed.value,
+            price: this.price.value,
+            img: this.img.value
+        }
+
+
+        let method = 'POST'
+        console.log(userObj);
+        if (id) {
+            url = url + "/" + id;
+            method = 'PUT'
+        }
+
+        fetch(url, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userObj)
+        }).then(res => {
+            print()
+        })
+    });
+
+
+
+
+    if (id) {
+        updateData()
+    }
+    function updateData() {
+
+        fetch(url + "/" + id).then(data => {
+            return data.json();
+        }).then(res => {
+            console.log(res);
+            document.getElementById("Name").value = res.name;
+            document.getElementById("Fuel").value = res.fuel
+            document.getElementById("Speed").value = res.speed,
+                document.getElementById("Price").value = res.price;
+        })
+
+    }
+</script>
+
+
+</html>

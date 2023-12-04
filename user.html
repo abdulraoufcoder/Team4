@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <title>Cars Project with Team</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            font-weight: 400;
+            font-size: 23.57px;
+            font-family: sans-serif;
+        }
+
+        .navbar {
+
+            background-color: white;
+            padding: 18px 25px 20px 25px;
+            height: 12vh;
+            padding-left: 50px;
+        }
+
+        .navbar ul {
+            overflow: auto;
+
+        }
+
+        .navbar li {
+            float: right;
+            list-style: none;
+            padding: 12px;
+            margin: 5px;
+            font-size: 18.4px;
+
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .navbar a.active {
+            background-color: #707DFA;
+            color: white;
+            padding: 5px 15px 5px 15px;
+            border-radius: 5px;
+
+
+        }
+
+        .active:hover {
+            color: rgb(0, 0, 0);
+            border: 1px solid #2538e2;
+        }
+
+        .non-active:hover {
+            text-decoration: underline;
+            color: rgb(0, 0, 0);
+
+        }
+
+        .section1 {
+            width: 100%;
+            height: 515px;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            margin-top: 40px;
+        }
+
+        .footer {
+            height: 72px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #707DFA;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: auto;
+            width: 70%;
+            gap: 20px;
+            padding: 30px 20px;
+            margin-bottom: 40px;
+        }
+
+        .box {
+            width: 30%;
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-family: sans-serif;
+        }
+
+        .img1 {
+            width: 100%;
+            height: 27vh;
+            border-bottom: 1px solid rgb(45, 44, 44);
+        }
+
+        .div {
+            padding: 20px 20px;
+        }
+
+        h2 {
+            padding-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .bookbtn {
+            background-color: #707DFA;
+            border-radius: 2px;
+            width: 70px;
+            padding: 8px 2px;
+            border: none;
+            color: white;
+
+        }
+
+        .div2 {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <img src="/download 1.png" alt="">
+                <li><a class="non-active" href="#">Contacts</a></li>
+                <li><a class="non-active" href="#">Blog</a></li>
+                <li><a class="non-active" href="#">Products</a></li>
+                <li><a class="non-active" href="#">Faq</a></li>
+                <li><a class="active" href="#home">Home</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+
+    <div>
+        <img src="/3c16400f-6e18-40f1-abc7-09ea7f079899_XC40_C40_Recharge 1.png" alt="" class="section1">
+    </div>
+
+    <div>
+        <h1>Our Collection</h1>
+    </div>
+    <div class="container"></div>
+    <div>
+        <footer class="footer">Copyright holder Yumna Arif</footer>
+    </div>
+</body>
+<script>
+    fetch('http://localhost:3000/cars').then(res => {
+        console.log(res);
+        if (res.status == 200)
+            return res.json();
+    }).then(res2 => {
+        console.log(res2);
+        cardMaker(res2);
+    });
+
+
+
+    function cardMaker(res2) {
+        let str = ''
+        res2.forEach(function (tag) {
+            console.log(tag);
+            str += `
+            <div class="box">
+               <img class="img1" src = " ${tag.imgUrl}"></img>
+               <div class="div">
+                <h2>${tag.h1}</h2>
+                <p class="para">${'Fuel:' + tag.Fuel}</p>
+                <p class="p2">${'Speed: ' + tag.Speed}</p>
+                <div class="div2">
+                <p class="p2">${'Price: ' + tag.Price}</p>
+                <button class="bookbtn">Book Car</button>
+                </div>
+                </div>
+                </div>
+            `
+        })
+
+        document.querySelector('.container').innerHTML = str
+
+        console.log(str);
+    }
+
+</script>
+
+</html>

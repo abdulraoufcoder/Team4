@@ -125,7 +125,7 @@
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
-    let url = "http://localhost:3000/Inputs"
+    let url = "http://localhost:3000/cars"
 
     function print() {
         window.location.href = "index.html"
@@ -183,6 +183,7 @@
             document.getElementById("Fuel").value = res.fuel
             document.getElementById("Speed").value = res.speed,
                 document.getElementById("Price").value = res.price;
+                document.getElementById("Img").value = res.img;
         })
 
     }
